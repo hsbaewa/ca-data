@@ -1,0 +1,78 @@
+[versions]
+# Networking - ktor #
+ktor = "3.0.3"
+ktorfit = "2.2.0"
+
+# Coroutine #
+coroutineVersion = "1.9.0"
+
+# Kotlin #
+jetbrainsKotlinJvm = "2.1.0"
+kotlin = "2.1.10"
+
+# Maven Central #
+maven-publish = "0.28.0"
+
+# Testing #
+kover = "0.8.3"
+ui-test = "1.7.7"
+junit5-robolectric = "0.9.0"
+
+# ksp #
+ksp = "2.1.10-1.0.29"
+
+agp = "8.5.2"
+coreKtx = "1.15.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+jetbrainsKotlinJvmVersion = "2.1.10"
+
+[libraries]
+# Networking - ktor #
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+# Networking - ktorfit #
+ktorfit-lib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" }
+
+
+# Coroutine #
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutineVersion" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutineVersion" }
+
+# Testing #
+ui-test-junit4-android = { module = "androidx.compose.ui:ui-test-junit4-android", version.ref = "ui-test" }
+ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "ui-test" }
+
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+[plugins]
+# Networking - ktorfit #
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }
+
+# Maven Central #
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
+
+# Testing #
+kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+junit5-robolectric = { id = "tech.apter.junit5.jupiter.robolectric-extension-gradle-plugin", version.ref = "junit5-robolectric" }
+
+android-application = { id = "com.android.application", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvmVersion" }
+
