@@ -13,6 +13,9 @@ kotlin = "2.1.10"
 # Maven Central #
 maven-publish = "0.28.0"
 
+# Clean Architecture #
+ca-data = "0.0.1"
+
 # Testing #
 kover = "0.8.3"
 ui-test = "1.7.7"
@@ -46,6 +49,9 @@ ktorfit-lib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref =
 # Coroutine #
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutineVersion" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutineVersion" }
+
+# Clean Architecture #
+ca-data = { group = "io.github.hsbaewa", name = "ca-data", version.ref = "ca-data" }
 
 # Testing #
 ui-test-junit4-android = { module = "androidx.compose.ui:ui-test-junit4-android", version.ref = "ui-test" }
