@@ -5,6 +5,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.decodeFromJsonElement
+import kotlinx.serialization.json.encodeToJsonElement
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 
@@ -17,6 +18,10 @@ class KotlinJson {
         this.json.runCatching { decodeFromString<T>(json) }.getOrNull()
 
     fun toJson(obj: JsonElement): String = json.encodeToString(obj)
+
+    inline fun <reified T> toJson(value: T): JsonElement = json.encodeToJsonElement(value)
+
+    inline fun <reified T> toJsonString(value: T): String = json.encodeToString(value)
 
     companion object {
         val kotlinJson = Json {
