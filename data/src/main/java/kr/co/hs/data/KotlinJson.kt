@@ -43,7 +43,8 @@ class KotlinJson {
             ?: throw JsonConvertException("not found value from key : $key")
 
         inline fun <reified T> JsonElement.getListOrNull(key: String): List<T>? = jsonObject[key]
-            ?.jsonArray
+            ?.runCatching { jsonArray }
+            ?.getOrNull()
             ?.map { kotlinJson.decodeFromJsonElement<T>(it) }
     }
 }

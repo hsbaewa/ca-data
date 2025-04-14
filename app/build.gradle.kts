@@ -55,7 +55,7 @@ dependencies {
     implementation(libs.ktor.serialization.kotlinx.json)
 
     // Clean Architecture
-    implementation(libs.ca.data)
+    implementation(project(":data"))
 
     // Testing
     androidTestImplementation(libs.ui.test.junit4.android)
