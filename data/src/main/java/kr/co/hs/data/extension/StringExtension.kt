@@ -16,4 +16,12 @@ object StringExtension {
             padding + raw
         }
         .getOrDefault("00000000000000000000000000000000")
+
+    fun String.toJwtFragmentsOrNull() = runCatching {
+        this.replace(" ", "+")
+            .replace("_", "/")
+            .replace("-", "+")
+            .split(".")
+            .takeIf { it.size > 2 }
+    }.getOrNull()
 }

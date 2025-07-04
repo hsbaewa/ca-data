@@ -8,6 +8,8 @@ import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.encodeToJsonElement
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
 
 class KotlinJson {
     val json: Json = kotlinJson
@@ -22,6 +24,14 @@ class KotlinJson {
     inline fun <reified T> toJson(value: T): JsonElement = json.encodeToJsonElement(value)
 
     inline fun <reified T> toJsonString(value: T): String = json.encodeToString(value)
+
+    @OptIn(ExperimentalEncodingApi::class)
+    inline fun <reified T> fromJwtPayload(
+        payload: String
+    ): T? = runCatching { Base64.decode(payload) }
+        .getOrNull()
+        ?.let { String(it) }
+        ?.let { fromJson(it) }
 
     companion object {
         val kotlinJson = Json {

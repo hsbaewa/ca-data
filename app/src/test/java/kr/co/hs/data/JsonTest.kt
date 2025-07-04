@@ -8,6 +8,7 @@ import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 import kr.co.hs.data.KotlinJson.Companion.getListOrNull
 import kr.co.hs.data.KotlinJson.Companion.getOrNull
+import kr.co.hs.data.extension.StringExtension.toJwtFragmentsOrNull
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
@@ -48,5 +49,19 @@ class JsonTest {
 
         val arr = jsonObject2.getListOrNull<String>("arr")
         assertNotNull(arr)
+    }
+
+    @Test
+    fun do_test_jwt_parse() {
+        val token =
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJFZERTQSJ9.eyJhdWQiOiJtb2JpbGVfYWdlbnQiLCJpYXQiOjE3NTE1OTE5MDAsImV4cCI6MTc1MTU5MzcwMC42OTY1NTcsIm1lbWJlciI6MjkwMjQ0LCJuYW1lIjoiXHUzMTRlXHUzMTRlIiwicHJvZHVjdCI6MTY0NTU0LCJsYWJlbCI6InMyNSJ9._Y-HYI2hTSmjBCo1Bc6m83KIZoedDF_fZ65nFhToY3CJ83NT0MTUmx9SKjSbBv_Gu7GeljP8ffVeBegTekUfBg"
+
+        val fragments = token.toJwtFragmentsOrNull()
+        assertNotNull(fragments)
+
+        val kotlinJson = KotlinJson()
+        val payloadData = kotlinJson.fromJwtPayload<Map<String, String>>(fragments!![1])
+
+        assertNotNull(payloadData)
     }
 }
